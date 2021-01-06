@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataProjectFivePModelStoreContainer" CdmEntityContainer="DataProjectFivePEntities">
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="DataProjectFivePModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="role_active" ColumnName="role_active" />
+          <ScalarProperty Name="role_option" ColumnName="role_option" />
+          <ScalarProperty Name="role_bin" ColumnName="role_bin" />
+          <ScalarProperty Name="role_datecreate" ColumnName="role_datecreate" />
+          <ScalarProperty Name="role_dateedit" ColumnName="role_dateedit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DataProjectFivePModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="user_img" ColumnName="user_img" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_pass" ColumnName="user_pass" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_token" ColumnName="user_token" />
+          <ScalarProperty Name="user_code" ColumnName="user_code" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="user_active" ColumnName="user_active" />
+          <ScalarProperty Name="user_option" ColumnName="user_option" />
+          <ScalarProperty Name="user_datecreate" ColumnName="user_datecreate" />
+          <ScalarProperty Name="user_datelogin" ColumnName="user_datelogin" />
+          <ScalarProperty Name="user_bin" ColumnName="user_bin" />
+          <ScalarProperty Name="user_dateedit" ColumnName="user_dateedit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

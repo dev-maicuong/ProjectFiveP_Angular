@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataProjectFivePModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="role_active" Type="Boolean" />
+    <Property Name="role_option" Type="Int32" />
+    <Property Name="role_bin" Type="Boolean" />
+    <Property Name="role_datecreate" Type="DateTime" Precision="3" />
+    <Property Name="role_dateedit" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="user_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="user_token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="user_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="role_id" Type="Int32" />
+    <Property Name="user_active" Type="Boolean" />
+    <Property Name="user_option" Type="Int32" />
+    <Property Name="user_datecreate" Type="DateTime" Precision="3" />
+    <Property Name="user_datelogin" Type="DateTime" Precision="3" />
+    <Property Name="user_bin" Type="Boolean" />
+    <Property Name="user_dateedit" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <Property Name="user_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DataProjectFivePEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

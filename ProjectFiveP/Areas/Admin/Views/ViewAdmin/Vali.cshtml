@@ -1,0 +1,71 @@
+﻿<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                user_name: {
+                    identifier: 'user_name',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Vui lòng nhập họ và tên!'
+                        },
+                        {
+                            type: 'minLength[5]',
+                            prompt: 'Vui lòng tên trên 5 lý tự!'
+                        }
+
+                    ]
+                },
+                user_email: {
+                    identifier: 'user_email',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Vui lòng nhập email!'
+                        },
+                        {
+                            type: 'email',
+                            prompt: 'Vui lòng nhập email hợp lệ!'
+                        }
+
+                    ]
+                },
+                user_pass: {
+                    identifier: 'user_pass',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Vui lòng nhập password!'
+                        },
+                        {
+                            type: 'minLength[5]',
+                            prompt: 'Vui lòng nhập mật khẩu hợp lệ!'
+                        }
+
+                    ]
+                },
+                pass: {
+                    identifier: 'pass',
+                    rules: [
+                        {
+                            type: 'empty',
+                            prompt: 'Vui lòng xác nhập mật khẩu!'
+                        },
+                        {
+                            type: 'match[user_pass]',
+                            prompt: 'Mật khẩu xác nhập không trùng khớp!'
+                        }
+
+                    ]
+                },
+
+
+
+
+
+
+
+            }
+        })
+        ;
+</script>

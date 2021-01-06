@@ -1,0 +1,115 @@
+﻿@model ProjectFiveP.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LoginPartial.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.token)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.token)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.role_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.option)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.option)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datecreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datecreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_edit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_edit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.user_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

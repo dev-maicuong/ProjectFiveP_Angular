@@ -1,0 +1,157 @@
+﻿@using ProjectFiveP.Models;
+@model ProjectFiveP.Models.User
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    DataProjectFivePEntities db = new DataProjectFivePEntities();
+    
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">DataTables.Net</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Tables</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Datatables</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <h4 class="card-title">Thêm người dùng</h4>
+                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                                    <i class="fa fa-plus"></i>
+                                    Add Row
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form enctype="multipart/form-data" method="post">
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            Tên
+                                            <div class="col-md-10">
+                                                <input type="text" name="user_name" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            Mật khẩu
+                                            <div class="col-md-10">
+                                                <input type="text" name="user_pass" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            Email
+                                            <div class="col-md-10">
+                                                <input type="email" name="user_email" class="form-control" />
+                                            </div>
+                                        </div>
+                                        @TempData["EmailExist"]
+
+                                        <div class="form-group">
+                                            Vai trò
+                                            @{
+                                                List<Role> roles = db.Roles.ToList();
+                                            }
+                                            <div class="col-md-10">
+                                                <select class="form-control" name="role_id">
+                                                    @foreach (var item in roles)
+                                                    {
+                                                        <option value="@item.role_id">@item.role_name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            Hoạt động
+                                            <div class="col-md-10">
+                                                <select class="form-control" name="user_active">
+                                                    <option value="True">Hoạt động</option>
+                                                    <option value="False">Ngừng hoạt động</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            Tùy chỉnh
+                                            <div class="col-md-10">
+                                                <input type="number" name="user_option" placeholder="Nhập số" class="form-control" />
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            Ảnh
+                                            <div class="col-md-10">
+                                                <input type="file" name="fileImg" placeholder="Ảnh" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Thêm" class="btn btn-default w-100" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.themekita.com">
+                            ThemeKita
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Help
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright ml-auto">
+                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+            </div>
+        </div>
+    </footer>
+</div>
