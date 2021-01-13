@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="@Url.Action("Create","Questions")" method="post">
+                    <form action="@Url.Action("Create","Questions")" method="post" class="ui form">
                         @Html.AntiForgeryToken()
                         <h6 class="heading-small text-muted mb-4">Đặt câu hỏi?</h6>
                         <div class="pl-lg-4">
@@ -107,10 +107,26 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-address"><i class="fas fa-laptop-code"></i> Công nghệ</label>
-                                        <select class="form-control" required="" name="postTechnology" id="selectTechnology" multiple="multiple">
-                                            <option>công nghệ 1</option>
-                                            <option value="2">công nghệ 1</option>
-                                            <option>công nghệ 1</option>
+                                        <select name="skills" multiple="" class="ui fluid dropdown">
+                                            <option value="">Skills</option>
+                                            <option value="angular">Angular</option>
+                                            <option value="css">CSS</option>
+                                            <option value="design">Graphic Design</option>
+                                            <option value="ember">Ember</option>
+                                            <option value="html">HTML</option>
+                                            <option value="ia">Information Architecture</option>
+                                            <option value="javascript">Javascript</option>
+                                            <option value="mech">Mechanical Engineering</option>
+                                            <option value="meteor">Meteor</option>
+                                            <option value="node">NodeJS</option>
+                                            <option value="plumbing">Plumbing</option>
+                                            <option value="python">Python</option>
+                                            <option value="rails">Rails</option>
+                                            <option value="react">React</option>
+                                            <option value="repair">Kitchen Repair</option>
+                                            <option value="ruby">Ruby</option>
+                                            <option value="ui">UI Design</option>
+                                            <option value="ux">User Experience</option>
                                         </select>
                                     </div>
                                 </div>
@@ -119,11 +135,37 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-address"><i class="fas fa-tags"></i> Seo</label>
-                                        <select class="form-control" required="" name="postTags" id="selectTags" multiple="multiple">
-                                            <option selected>từ khóa seo 1</option>
-                                            <option selected>từ khóa seo 1</option>
-                                            <option selected>từ khóa seo 1</option>
-                                        </select>
+                                        <div class="ui fluid multiple search selection dropdown">
+                                            <input name="tags" type="hidden">
+                                            <i class="dropdown icon"></i>
+                                            <div class="default text">Skills</div>
+                                            <div class="menu">
+                                                <div class="item" data-value="angular">Angular</div>
+                                                <div class="item" data-value="css">CSS</div>
+                                                <div class="item" data-value="design">Graphic Design</div>
+                                                <div class="item" data-value="ember">Ember</div>
+                                                <div class="item" data-value="html">HTML</div>
+                                                <div class="item" data-value="ia">Information Architecture</div>
+                                                <div class="item" data-value="javascript">Javascript</div>
+                                                <div class="item" data-value="mech">Mechanical Engineering</div>
+                                                <div class="item" data-value="meteor">Meteor</div>
+                                                <div class="item" data-value="node">NodeJS</div>
+                                                <div class="item" data-value="plumbing">Plumbing</div>
+                                                <div class="item" data-value="python">Python</div>
+                                                <div class="item" data-value="rails">Rails</div>
+                                                <div class="item" data-value="react">React</div>
+                                                <div class="item" data-value="repair">Kitchen Repair</div>
+                                                <div class="item" data-value="ruby">Ruby</div>
+                                                <div class="item" data-value="ui">UI Design</div>
+                                                <div class="item" data-value="ux">User Experience</div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $('.ui.dropdown')
+                                                .dropdown({
+                                                    allowAdditions: true
+                                                })
+                                        </script>
                                     </div>
                                 </div>
                             </div>

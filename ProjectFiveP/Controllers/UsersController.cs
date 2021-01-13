@@ -52,7 +52,7 @@ namespace ProjectFiveP.Controllers
                 HttpCookie cookie = new HttpCookie("user_id",user.user_id.ToString());
                 cookie.Expires.AddDays(10);
                 Response.Cookies.Set(cookie);
-                return Redirect("/Home/Index");
+                return Redirect("/HomeCenter/Index");
             }
             else
             {
@@ -65,7 +65,7 @@ namespace ProjectFiveP.Controllers
             HttpCookie cookie = new HttpCookie("user_id");
             cookie.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Add(cookie);
-            return Redirect("/Home/Index");
+            return Redirect("/Users/Login");
         }
         // GET: Users/Create
         public ActionResult Create()
@@ -109,10 +109,10 @@ namespace ProjectFiveP.Controllers
             User user = db.Users.Find(id);
             user.user_code = "#user-" + id;
             db.SaveChanges();
-            HttpCookie cookie = new HttpCookie("user_id", user.user_id.ToString());
+            HttpCookie cookie = new HttpCookie("user_id", id.ToString());
             cookie.Expires.AddDays(10);
             Response.Cookies.Set(cookie);
-            return Redirect("/Home/Index");
+            return Redirect("/HomeCenter/Index");
         }
 
         // GET: Users/Edit/5
