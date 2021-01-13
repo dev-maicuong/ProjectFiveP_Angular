@@ -34,5 +34,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="DataProjectFivePModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="question_admin_recycleBin" ColumnName="question_admin_recycleBin" />
+          <ScalarProperty Name="question_popular" ColumnName="question_popular" />
+          <ScalarProperty Name="question_userStatus" ColumnName="question_userStatus" />
+          <ScalarProperty Name="question_recycleBin" ColumnName="question_recycleBin" />
+          <ScalarProperty Name="question_medalCalculator" ColumnName="question_medalCalculator" />
+          <ScalarProperty Name="question_totalRate" ColumnName="question_totalRate" />
+          <ScalarProperty Name="question_view" ColumnName="question_view" />
+          <ScalarProperty Name="question_totalComment" ColumnName="question_totalComment" />
+          <ScalarProperty Name="question_totalAnswer" ColumnName="question_totalAnswer" />
+          <ScalarProperty Name="question_title" ColumnName="question_title" />
+          <ScalarProperty Name="question_activate" ColumnName="question_activate" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="question_dateEdit" ColumnName="question_dateEdit" />
+          <ScalarProperty Name="question_dateCreate" ColumnName="question_dateCreate" />
+          <ScalarProperty Name="question_content" ColumnName="question_content" />
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question_View">
+      <EntityTypeMapping TypeName="DataProjectFivePModel.Question_View">
+        <MappingFragment StoreEntitySet="Question_View">
+          <ScalarProperty Name="questionView_id" ColumnName="questionView_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

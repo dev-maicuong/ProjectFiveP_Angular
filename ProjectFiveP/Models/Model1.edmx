@@ -5,6 +5,33 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DataProjectFivePModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="question_id" />
+          </Key>
+          <Property Name="question_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question_content" Type="nvarchar(max)" />
+          <Property Name="question_dateCreate" Type="datetime" />
+          <Property Name="question_dateEdit" Type="datetime" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="question_activate" Type="bit" />
+          <Property Name="question_title" Type="nvarchar" MaxLength="300" />
+          <Property Name="question_totalAnswer" Type="int" />
+          <Property Name="question_totalComment" Type="int" />
+          <Property Name="question_view" Type="int" />
+          <Property Name="question_totalRate" Type="int" />
+          <Property Name="question_medalCalculator" Type="int" />
+          <Property Name="question_recycleBin" Type="bit" />
+          <Property Name="question_userStatus" Type="bit" />
+          <Property Name="question_popular" Type="int" />
+          <Property Name="question_admin_recycleBin" Type="bit" />
+        </EntityType>
+        <EntityType Name="Question_View">
+          <Key>
+            <PropertyRef Name="questionView_id" />
+          </Key>
+          <Property Name="questionView_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="role_id" />
@@ -36,6 +63,18 @@
           <Property Name="user_dateedit" Type="datetime" />
           <Property Name="user_img" Type="varchar(max)" />
         </EntityType>
+        <Association Name="FK_Question_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -49,8 +88,14 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DataProjectFivePModelStoreContainer">
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question_View" EntityType="Self.Question_View" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Question_Users" Association="Self.FK_Question_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
@@ -92,6 +137,7 @@
           <Property Name="user_dateedit" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
           <Property Name="user_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Questions" Relationship="DataProjectFivePModel.FK_Question_Users" FromRole="User" ToRole="Question" />
         </EntityType>
         <Association Name="FK_Users_Roles">
           <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
@@ -112,7 +158,53 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Questions" EntityType="DataProjectFivePModel.Question" />
+          <EntitySet Name="Question_View" EntityType="DataProjectFivePModel.Question_View" />
+          <AssociationSet Name="FK_Question_Users" Association="DataProjectFivePModel.FK_Question_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="question_id" />
+          </Key>
+          <Property Name="question_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="question_dateCreate" Type="DateTime" Precision="3" />
+          <Property Name="question_dateEdit" Type="DateTime" Precision="3" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="question_activate" Type="Boolean" />
+          <Property Name="question_title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="question_totalAnswer" Type="Int32" />
+          <Property Name="question_totalComment" Type="Int32" />
+          <Property Name="question_view" Type="Int32" />
+          <Property Name="question_totalRate" Type="Int32" />
+          <Property Name="question_medalCalculator" Type="Int32" />
+          <Property Name="question_recycleBin" Type="Boolean" />
+          <Property Name="question_userStatus" Type="Boolean" />
+          <Property Name="question_popular" Type="Int32" />
+          <Property Name="question_admin_recycleBin" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="DataProjectFivePModel.FK_Question_Users" FromRole="Question" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Question_View">
+          <Key>
+            <PropertyRef Name="questionView_id" />
+          </Key>
+          <Property Name="questionView_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_Question_Users">
+          <End Type="DataProjectFivePModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DataProjectFivePModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -149,6 +241,35 @@
                 <ScalarProperty Name="user_datelogin" ColumnName="user_datelogin" />
                 <ScalarProperty Name="user_bin" ColumnName="user_bin" />
                 <ScalarProperty Name="user_dateedit" ColumnName="user_dateedit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="DataProjectFivePModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="question_admin_recycleBin" ColumnName="question_admin_recycleBin" />
+                <ScalarProperty Name="question_popular" ColumnName="question_popular" />
+                <ScalarProperty Name="question_userStatus" ColumnName="question_userStatus" />
+                <ScalarProperty Name="question_recycleBin" ColumnName="question_recycleBin" />
+                <ScalarProperty Name="question_medalCalculator" ColumnName="question_medalCalculator" />
+                <ScalarProperty Name="question_totalRate" ColumnName="question_totalRate" />
+                <ScalarProperty Name="question_view" ColumnName="question_view" />
+                <ScalarProperty Name="question_totalComment" ColumnName="question_totalComment" />
+                <ScalarProperty Name="question_totalAnswer" ColumnName="question_totalAnswer" />
+                <ScalarProperty Name="question_title" ColumnName="question_title" />
+                <ScalarProperty Name="question_activate" ColumnName="question_activate" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="question_dateEdit" ColumnName="question_dateEdit" />
+                <ScalarProperty Name="question_dateCreate" ColumnName="question_dateCreate" />
+                <ScalarProperty Name="question_content" ColumnName="question_content" />
+                <ScalarProperty Name="question_id" ColumnName="question_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question_View">
+            <EntityTypeMapping TypeName="DataProjectFivePModel.Question_View">
+              <MappingFragment StoreEntitySet="Question_View">
+                <ScalarProperty Name="questionView_id" ColumnName="questionView_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

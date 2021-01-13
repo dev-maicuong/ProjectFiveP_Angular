@@ -32,6 +32,7 @@
     <Property Name="user_dateedit" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
     <Property Name="user_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Questions" Relationship="DataProjectFivePModel.FK_Question_Users" FromRole="User" ToRole="Question" />
   </EntityType>
   <Association Name="FK_Users_Roles">
     <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
@@ -52,5 +53,51 @@
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="Questions" EntityType="DataProjectFivePModel.Question" />
+    <EntitySet Name="Question_View" EntityType="DataProjectFivePModel.Question_View" />
+    <AssociationSet Name="FK_Question_Users" Association="DataProjectFivePModel.FK_Question_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="question_id" />
+    </Key>
+    <Property Name="question_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="question_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="question_dateCreate" Type="DateTime" Precision="3" />
+    <Property Name="question_dateEdit" Type="DateTime" Precision="3" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="question_activate" Type="Boolean" />
+    <Property Name="question_title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="question_totalAnswer" Type="Int32" />
+    <Property Name="question_totalComment" Type="Int32" />
+    <Property Name="question_view" Type="Int32" />
+    <Property Name="question_totalRate" Type="Int32" />
+    <Property Name="question_medalCalculator" Type="Int32" />
+    <Property Name="question_recycleBin" Type="Boolean" />
+    <Property Name="question_userStatus" Type="Boolean" />
+    <Property Name="question_popular" Type="Int32" />
+    <Property Name="question_admin_recycleBin" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="DataProjectFivePModel.FK_Question_Users" FromRole="Question" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Question_View">
+    <Key>
+      <PropertyRef Name="questionView_id" />
+    </Key>
+    <Property Name="questionView_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK_Question_Users">
+    <End Type="DataProjectFivePModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="DataProjectFivePModel.Question" Role="Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

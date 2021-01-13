@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="DataProjectFivePModel.Role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DataProjectFivePModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DataProjectFivePModel.FK_Users_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DataProjectFivePModel.Question" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="DataProjectFivePModel.Question_View" Width="1.5" PointX="0.75" PointY="6.75" />
+        <AssociationConnector Association="DataProjectFivePModel.FK_Question_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

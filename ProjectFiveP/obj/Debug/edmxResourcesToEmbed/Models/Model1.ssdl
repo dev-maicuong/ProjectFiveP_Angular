@@ -1,5 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DataProjectFivePModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="question_id" />
+    </Key>
+    <Property Name="question_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question_content" Type="nvarchar(max)" />
+    <Property Name="question_dateCreate" Type="datetime" />
+    <Property Name="question_dateEdit" Type="datetime" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="question_activate" Type="bit" />
+    <Property Name="question_title" Type="nvarchar" MaxLength="300" />
+    <Property Name="question_totalAnswer" Type="int" />
+    <Property Name="question_totalComment" Type="int" />
+    <Property Name="question_view" Type="int" />
+    <Property Name="question_totalRate" Type="int" />
+    <Property Name="question_medalCalculator" Type="int" />
+    <Property Name="question_recycleBin" Type="bit" />
+    <Property Name="question_userStatus" Type="bit" />
+    <Property Name="question_popular" Type="int" />
+    <Property Name="question_admin_recycleBin" Type="bit" />
+  </EntityType>
+  <EntityType Name="Question_View">
+    <Key>
+      <PropertyRef Name="questionView_id" />
+    </Key>
+    <Property Name="questionView_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="role_id" />
@@ -31,6 +58,18 @@
     <Property Name="user_dateedit" Type="datetime" />
     <Property Name="user_img" Type="varchar(max)" />
   </EntityType>
+  <Association Name="FK_Question_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Users_Roles">
     <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -44,8 +83,14 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DataProjectFivePModelStoreContainer">
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question_View" EntityType="Self.Question_View" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Question_Users" Association="Self.FK_Question_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
     <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Users" EntitySet="Users" />

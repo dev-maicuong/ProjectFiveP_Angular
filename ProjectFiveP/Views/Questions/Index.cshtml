@@ -1,0 +1,118 @@
+﻿@model IEnumerable<ProjectFiveP.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.question_content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_dateCreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_dateEdit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_activate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_totalAnswer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_totalComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_view)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_totalRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_medalCalculator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_recycleBin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_userStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_popular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question_admin_recycleBin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.user_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_dateCreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_dateEdit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_activate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_totalAnswer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_totalComment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_view)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_totalRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_medalCalculator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_recycleBin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_userStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_popular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question_admin_recycleBin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.user_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.question_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.question_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.question_id })
+        </td>
+    </tr>
+}
+
+</table>

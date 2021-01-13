@@ -1,0 +1,139 @@
+﻿@model ProjectFiveP.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.question_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_dateCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_dateCreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_dateEdit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_dateEdit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_activate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_activate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_totalAnswer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_totalAnswer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_totalComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_totalComment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_view)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_view)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_totalRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_totalRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_medalCalculator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_medalCalculator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_recycleBin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_recycleBin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_userStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_userStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_popular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_popular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.question_admin_recycleBin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.question_admin_recycleBin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.user_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.user_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.question_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

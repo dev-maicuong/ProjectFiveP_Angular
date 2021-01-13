@@ -17,5 +17,18 @@ namespace ProjectFiveP.Controllers
         {
             return PartialView();
         }
+        public PartialViewResult Select2T()
+        {
+            return PartialView();
+        }
+        public PartialViewResult PanelCenter()
+        {
+            return PartialView();
+        }
+        //menu tùy chọn bên trái của center
+        public PartialViewResult MenuCenter()
+        {
+            return PartialView();
+        }
     }
 }

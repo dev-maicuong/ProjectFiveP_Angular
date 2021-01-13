@@ -177,7 +177,7 @@
     <Compile Include="Controllers\HomeCenterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\Users1Controller.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,6 +185,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Json\ListQuestion.cs" />
     <Compile Include="Models\Json\ListUsers.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Model1.Context.cs">
@@ -201,6 +202,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Question.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Question_View.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -593,6 +600,72 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ckeditor5\build\ckeditor.js" />
+    <Content Include="Content\ckeditor5\build\translations\af.js" />
+    <Content Include="Content\ckeditor5\build\translations\ar.js" />
+    <Content Include="Content\ckeditor5\build\translations\ast.js" />
+    <Content Include="Content\ckeditor5\build\translations\az.js" />
+    <Content Include="Content\ckeditor5\build\translations\bg.js" />
+    <Content Include="Content\ckeditor5\build\translations\ca.js" />
+    <Content Include="Content\ckeditor5\build\translations\cs.js" />
+    <Content Include="Content\ckeditor5\build\translations\da.js" />
+    <Content Include="Content\ckeditor5\build\translations\de-ch.js" />
+    <Content Include="Content\ckeditor5\build\translations\de.js" />
+    <Content Include="Content\ckeditor5\build\translations\el.js" />
+    <Content Include="Content\ckeditor5\build\translations\en-au.js" />
+    <Content Include="Content\ckeditor5\build\translations\en-gb.js" />
+    <Content Include="Content\ckeditor5\build\translations\eo.js" />
+    <Content Include="Content\ckeditor5\build\translations\es.js" />
+    <Content Include="Content\ckeditor5\build\translations\et.js" />
+    <Content Include="Content\ckeditor5\build\translations\eu.js" />
+    <Content Include="Content\ckeditor5\build\translations\fa.js" />
+    <Content Include="Content\ckeditor5\build\translations\fi.js" />
+    <Content Include="Content\ckeditor5\build\translations\fr.js" />
+    <Content Include="Content\ckeditor5\build\translations\gl.js" />
+    <Content Include="Content\ckeditor5\build\translations\gu.js" />
+    <Content Include="Content\ckeditor5\build\translations\he.js" />
+    <Content Include="Content\ckeditor5\build\translations\hr.js" />
+    <Content Include="Content\ckeditor5\build\translations\hu.js" />
+    <Content Include="Content\ckeditor5\build\translations\id.js" />
+    <Content Include="Content\ckeditor5\build\translations\it.js" />
+    <Content Include="Content\ckeditor5\build\translations\ja.js" />
+    <Content Include="Content\ckeditor5\build\translations\km.js" />
+    <Content Include="Content\ckeditor5\build\translations\kn.js" />
+    <Content Include="Content\ckeditor5\build\translations\ko.js" />
+    <Content Include="Content\ckeditor5\build\translations\ku.js" />
+    <Content Include="Content\ckeditor5\build\translations\lt.js" />
+    <Content Include="Content\ckeditor5\build\translations\lv.js" />
+    <Content Include="Content\ckeditor5\build\translations\ms.js" />
+    <Content Include="Content\ckeditor5\build\translations\nb.js" />
+    <Content Include="Content\ckeditor5\build\translations\ne.js" />
+    <Content Include="Content\ckeditor5\build\translations\nl.js" />
+    <Content Include="Content\ckeditor5\build\translations\no.js" />
+    <Content Include="Content\ckeditor5\build\translations\oc.js" />
+    <Content Include="Content\ckeditor5\build\translations\pl.js" />
+    <Content Include="Content\ckeditor5\build\translations\pt-br.js" />
+    <Content Include="Content\ckeditor5\build\translations\pt.js" />
+    <Content Include="Content\ckeditor5\build\translations\ro.js" />
+    <Content Include="Content\ckeditor5\build\translations\ru.js" />
+    <Content Include="Content\ckeditor5\build\translations\si.js" />
+    <Content Include="Content\ckeditor5\build\translations\sk.js" />
+    <Content Include="Content\ckeditor5\build\translations\sl.js" />
+    <Content Include="Content\ckeditor5\build\translations\sq.js" />
+    <Content Include="Content\ckeditor5\build\translations\sr-latn.js" />
+    <Content Include="Content\ckeditor5\build\translations\sr.js" />
+    <Content Include="Content\ckeditor5\build\translations\sv.js" />
+    <Content Include="Content\ckeditor5\build\translations\th.js" />
+    <Content Include="Content\ckeditor5\build\translations\tk.js" />
+    <Content Include="Content\ckeditor5\build\translations\tr.js" />
+    <Content Include="Content\ckeditor5\build\translations\tt.js" />
+    <Content Include="Content\ckeditor5\build\translations\ug.js" />
+    <Content Include="Content\ckeditor5\build\translations\uk.js" />
+    <Content Include="Content\ckeditor5\build\translations\vi.js" />
+    <Content Include="Content\ckeditor5\build\translations\zh-cn.js" />
+    <Content Include="Content\ckeditor5\build\translations\zh.js" />
+    <Content Include="Content\ckeditor5\sample\index.html" />
+    <Content Include="Content\ckeditor5\sample\styles.css" />
+    <Content Include="Content\ckeditor5\src\ckeditor.js" />
+    <Content Include="Content\ckeditor5\webpack.config.js" />
     <Content Include="Content\LayoutCenter\css\argon.css" />
     <Content Include="Content\LayoutCenter\css\argon.min.css" />
     <Content Include="Content\LayoutCenter\css\bootstrap\bootstrap-grid.css" />
@@ -3940,6 +4013,10 @@
     <Content Include="Content\LayoutCenter\vendor\nucleo\fonts\nucleo-icons.woff" />
     <Content Include="Content\LayoutCenter\vendor\nucleo\fonts\nucleo-icons.woff2" />
     <Content Include="Content\LayoutCenter\vendor\prismjs\components.json" />
+    <Content Include="Content\ckeditor5\build\ckeditor.js.map" />
+    <Content Include="Content\ckeditor5\LICENSE.md" />
+    <Content Include="Content\ckeditor5\package.json" />
+    <Content Include="Content\ckeditor5\README.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3950,6 +4027,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ListJson\ListQuestions.js" />
     <Content Include="Scripts\ListJson\ListUsers.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
@@ -3986,11 +4064,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Users1\Create.cshtml" />
-    <Content Include="Views\Users1\Delete.cshtml" />
-    <Content Include="Views\Users1\Details.cshtml" />
-    <Content Include="Views\Users1\Edit.cshtml" />
-    <Content Include="Views\Users1\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -4001,6 +4074,15 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutCenter.cshtml" />
     <Content Include="Views\HomeCenter\Index.cshtml" />
+    <Content Include="Views\Questions\Create.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\Questions\Details.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml" />
+    <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\Questions\Question.cshtml" />
+    <Content Include="Views\View\Select2T.cshtml" />
+    <Content Include="Views\View\PanelCenter.cshtml" />
+    <Content Include="Views\View\MenuCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

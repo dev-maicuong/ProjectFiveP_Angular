@@ -14,6 +14,12 @@ namespace ProjectFiveP.Models
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Questions = new HashSet<Question>();
+        }
+    
         public int user_id { get; set; }
         public string user_name { get; set; }
         public string user_pass { get; set; }
@@ -30,5 +36,7 @@ namespace ProjectFiveP.Models
         public string user_img { get; set; }
     
         public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }

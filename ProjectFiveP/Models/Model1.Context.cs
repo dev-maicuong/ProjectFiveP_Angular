@@ -27,5 +27,7 @@ namespace ProjectFiveP.Models
     
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<Question_View> Question_View { get; set; }
     }
 }
